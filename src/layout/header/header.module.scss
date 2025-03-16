@@ -1,0 +1,77 @@
+@import "../../colors";
+
+%display{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header{
+  @extend %display;
+  width: 100%;
+  padding:20px;
+  font-size: 1.5em;
+}
+.notf_mail{
+  @extend %display;
+  gap: 10px;
+} 
+.client_part{
+  @extend %display;
+  width: 30%;
+}
+.client{
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  overflow: hidden;
+  img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+@keyframes blink {
+  0% {
+    box-shadow: 0 0 1px 1px $green; 
+  }
+  50% {
+    box-shadow: 0 0 5px 5px $green; 
+  }
+  100% {
+    box-shadow: 0 0 1.5px 1.5px $green; 
+  }
+  }
+  .notification_part{
+    position: relative;
+    cursor: pointer;
+    .notification{
+      @extend  %animation;
+    }  
+  }
+  .mail_part{
+    @extend .notification_part;
+    .mail{
+      @extend %animation;
+    }
+  }
+  %animation{
+    animation: blink 1.5s infinite;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background-color: $green;
+    border-color: $green;
+    position: absolute;
+    top: -6px;
+    right: 0px; 
+  }
+ 
+  @media screen and (min-width: 768px) {
+    .header{
+      padding: 20px;
+    }
+    .client_part{
+      padding-right: 50px;
+      max-width: 150px;
+    }
+  }
